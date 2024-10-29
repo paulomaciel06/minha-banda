@@ -110,6 +110,7 @@ input, select {
     font-family: var(--fonte-principal);
     background-color: #fafafa;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 input:hover, select:hover {
@@ -141,6 +142,7 @@ button {
     justify-content: center;
     gap: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 button:hover {

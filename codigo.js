@@ -25,7 +25,7 @@ Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
 Aguardo seu retorno!`;
 
     // Substitua este número pelo seu (mantenha o código do país e DDD)
-    const numeroWhatsapp = '5511999999999';
+    const numeroWhatsapp = '5583999196364';
 
     const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagemWhatsapp)}`;
 

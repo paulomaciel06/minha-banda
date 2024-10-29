@@ -52,17 +52,16 @@
                 </select>
             </div>
 
-            <!-- Apenas a parte do select de local muda -->
-<div class="grupo-campo">
-    <label for="localEvento">
-        <i class="fas fa-map-marker-alt"></i> Local:
-    </label>
-    <select id="localSelect" required>
-        <option value="João Pessoa" selected>João Pessoa</option>
-        <option value="outros">Outros</option>
-    </select>
-    <input type="text" id="localOutro" placeholder="Digite o local do evento" style="display: none;">
-</div>
+            <div class="grupo-campo">
+                <label for="localEvento">
+                    <i class="fas fa-map-marker-alt"></i> Local:
+                </label>
+                <select id="localSelect" required>
+                    <option value="João Pessoa" selected>João Pessoa</option>
+                    <option value="outros">Outros</option>
+                </select>
+                <input type="text" id="localOutro" placeholder="Digite o local do evento" style="display: none;">
+            </div>
 
             <div class="grupo-campo">
                 <label for="tipoShow">
@@ -105,6 +104,48 @@
         </div>
         <p class="copyright">© 2024 Paulo Maciel. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Chat Bot -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/10/29/18/20241029180731-CP7DK076.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            hideWidget: false,
+            disableAnimations: false,
+            showPoweredBy: false,
+            closeLabel: 'Fechar',
+            messagingUrl: 'https://messaging.botpress.cloud',
+            composerPlaceholder: 'Digite sua mensagem...',
+            backgroundColor: '#f5f5f5',
+            textColorOnBackground: '#333333',
+            foregroundColor: '#000000',
+            textColorOnForeground: '#ffffff',
+            containerWidth: '100%',
+            layoutWidth: '100%',
+            showConversationsButton: false,
+            enableTranscriptDownload: false,
+            botName: 'Assistente Paulo',
+            avatarUrl: '',
+            className: 'webchat-custom',
+            stylesheet: `
+                .webchat-custom {
+                    width: 90% !important;
+                    max-width: 400px !important;
+                    margin: 0 auto !important;
+                    border-radius: 10px !important;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+                }
+                @media (max-width: 768px) {
+                    .webchat-custom {
+                        width: 100% !important;
+                        height: 100% !important;
+                        max-width: none !important;
+                        border-radius: 0 !important;
+                    }
+                }
+            `
+        });
+    </script>
 
     <script src="./codigo.js"></script>
 </body>

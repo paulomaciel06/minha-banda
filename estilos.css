@@ -1,55 +1,121 @@
-/* Resetando estilos padrão do navegador */
-* {
+:root {
+    --cor-principal: #000000;
+    --cor-secundaria: #333333;
+    --cor-fundo: #ffffff;
+    --cor-borda: #e0e0e0;
+    --espacamento-padrao: 20px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: #f8f8f8;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Estilo do corpo da página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
+.cabecalho {
+    background-color: var(--cor-fundo);
+    padding: 40px 20px;
+    border-bottom: 1px solid var(--cor-borda);
+    margin-bottom: var(--espacamento-padrao);
 }
 
-/* Caixa principal que contém o formulário */
-.caixa-principal {
+.logo-container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Estilo do título */
-h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
 }
 
-/* Estilo para cada grupo de campo do formulário */
+.logo {
+    max-width: 280px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.caixa-principal {
+    max-width: 600px;
+    margin: 0 auto var(--espacamento-padrao);
+    background-color: var(--cor-fundo);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    flex-grow: 1;
+}
+
+h1 {
+    color: var(--cor-principal);
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
 .grupo-campo {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
-/* Estilo para as etiquetas dos campos */
 label {
     display: block;
-    margin-bottom: 5px;
-    color: #666;
+    margin-bottom: 8px;
+    color: var(--cor-secundaria);
+    font-size: 14px;
 }
 
-/* Estilo para campos de entrada e seleção */
+label i {
+    margin-right: 8px;
+    color: var(--cor-principal);
+}
+
 input, select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-/* Estilo específico para o checkbox */
+input:focus, select:focus {
+    border-color: var(--cor-principal);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button:hover {
+    background-color: var(--cor-secundaria);
+    transform: translateY(-2px);
+}
+
 .caixa-selecao {
     display: flex;
     align-items: center;
@@ -60,26 +126,43 @@ input, select {
     width: auto;
 }
 
-/* Estilo do botão */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #25d366; /* Cor do WhatsApp */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+.rodape {
+    background-color: var(--cor-fundo);
+    padding: var(--espacamento-padrao);
+    text-align: center;
+    border-top: 1px solid var(--cor-borda);
+    margin-top: auto;
 }
 
-/* Efeito quando passa o mouse no botão */
-button:hover {
-    background-color: #128c7e;
+.redes-sociais {
+    margin-bottom: 15px;
 }
 
-/* Ajustes para telas menores (celular) */
+.icone-social {
+    color: var(--cor-principal);
+    font-size: 24px;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.icone-social:hover {
+    color: var(--cor-secundaria);
+}
+
+.copyright {
+    color: var(--cor-secundaria);
+    font-size: 12px;
+    margin: 0;
+}
+
 @media (max-width: 480px) {
     .caixa-principal {
-        padding: 15px;
+        margin: 15px;
+        padding: 20px;
+    }
+    
+    .logo {
+        max-width: 220px;
     }
 }

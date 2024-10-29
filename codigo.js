@@ -11,20 +11,20 @@ document.getElementById('formularioOrcamento').addEventListener('submit', functi
     const tipoShowEscolhido = document.getElementById('tipoShow').value;
     const precisaEquipamento = document.getElementById('equipamentoSom').checked;
 
-    const mensagemWhatsapp = `Olá! Gostaria de fazer um orçamento para show %E2%9C%A8
+    const mensagemWhatsapp = `Olá! Gostaria de fazer um orçamento para show
 
-%F0%9F%93%85 Data: ${dataEscolhida}
-%E2%8F%B0 Horário: ${horarioEscolhido}
-%F0%9F%93%8D Local: ${localEscolhido}
-%F0%9F%8E%B5 Formato: ${tipoShowEscolhido}
-%F0%9F%94%8A Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
+Data: ${dataEscolhida}
+Horário: ${horarioEscolhido}
+Local: ${localEscolhido}
+Formato: ${tipoShowEscolhido}
+Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
 
-Aguardo seu retorno! %F0%9F%98%8A`;
+Aguardo seu retorno!`;
 
     // Substitua este número pelo seu (mantenha o código do país e DDD)
     const numeroWhatsapp = '5583999196364';
 
-    const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensagemWhatsapp}`;
+    const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagemWhatsapp)}`;
 
     setTimeout(() => {
         window.open(linkWhatsapp);

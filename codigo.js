@@ -2,7 +2,6 @@ document.getElementById('formularioOrcamento').addEventListener('submit', functi
     evento.preventDefault();
     const botao = evento.target.querySelector('button');
     
-    // Adiciona estado de loading
     botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Abrindo WhatsApp...';
     botao.disabled = true;
 
@@ -12,31 +11,23 @@ document.getElementById('formularioOrcamento').addEventListener('submit', functi
     const tipoShowEscolhido = document.getElementById('tipoShow').value;
     const precisaEquipamento = document.getElementById('equipamentoSom').checked;
 
-    // Usando emojis Unicode em vez de shortcodes
-    const mensagemWhatsapp = `Olá! Gostaria de fazer um orçamento para show ⭐
+    const mensagemWhatsapp = `Olá! Gostaria de fazer um orçamento para show %E2%9C%A8
 
-📆 Data: ${dataEscolhida}
-⏰ Horário: ${horarioEscolhido}
-📍 Local: ${localEscolhido}
-🎵 Formato: ${tipoShowEscolhido}
-🔊 Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
+%F0%9F%93%85 Data: ${dataEscolhida}
+%E2%8F%B0 Horário: ${horarioEscolhido}
+%F0%9F%93%8D Local: ${localEscolhido}
+%F0%9F%8E%B5 Formato: ${tipoShowEscolhido}
+%F0%9F%94%8A Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
 
-Aguardo seu retorno! 😊`;
+Aguardo seu retorno! %F0%9F%98%8A`;
 
-    // Seu número de WhatsApp (substitua pelo seu, mantendo o código do país e DDD)
+    // Substitua este número pelo seu (mantenha o código do país e DDD)
     const numeroWhatsapp = '5583999196364';
 
-    // Codifica a mensagem para URL
-    const mensagemCodificada = encodeURIComponent(mensagemWhatsapp);
-    
-    // Cria o link do WhatsApp
-    const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensagemCodificada}`;
+    const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensagemWhatsapp}`;
 
-    // Abre o WhatsApp após um pequeno delay
     setTimeout(() => {
         window.open(linkWhatsapp);
-        
-        // Restaura o botão após 1 segundo
         setTimeout(() => {
             botao.innerHTML = '<i class="fab fa-whatsapp"></i> Enviar no WhatsApp';
             botao.disabled = false;

@@ -169,19 +169,19 @@ button:active {
     text-align: center;
     font-size: 12px;
     color: #999;
-    margin-top: 15px; /* Reduzido de 20px */
+    margin-top: 3px; /* Reduzido de 20px */
     margin-bottom: 0; /* Garante que não há margem embaixo */
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .caixa-principal {
     max-width: 600px;
     margin: 0 auto 10px; /* Reduzido o margin-bottom */
     background-color: var(--cor-fundo);
-    padding: 25px 30px 15px; /* Reduzido o padding inferior */
+    padding: 25px 20px 15px; /* Reduzido o padding inferior */
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 .rodape {

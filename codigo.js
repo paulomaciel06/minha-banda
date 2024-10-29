@@ -11,15 +11,15 @@ document.getElementById('formularioOrcamento').addEventListener('submit', functi
     const tipoShowEscolhido = document.getElementById('tipoShow').value;
     const precisaEquipamento = document.getElementById('equipamentoSom').checked;
 
-    const mensagemWhatsapp = `Olá! Gostaria de fazer um orçamento para show
+    const mensagemWhatsapp = `Olá! Gostaria de fazer um orçamento para show 🎵
 
-Data: ${dataEscolhida}
-Horário: ${horarioEscolhido}
-Local: ${localEscolhido}
-Formato: ${tipoShowEscolhido}
-Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
+📅 Data: ${dataEscolhida}
+⏰ Horário: ${horarioEscolhido}
+📍 Local: ${localEscolhido}
+🎸 Formato: ${tipoShowEscolhido}
+🎤 Equipamento: ${precisaEquipamento ? 'Precisa levar som' : 'Já possui som'}
 
-Aguardo seu retorno!`;
+Aguardo seu retorno! 😊`;
 
     // Substitua este número pelo seu (mantenha o código do país e DDD)
     const numeroWhatsapp = '5583999196364';

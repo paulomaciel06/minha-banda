@@ -26,6 +26,7 @@ body {
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    justify-content: flex-start;
 }
 
 .cabecalho {
@@ -57,11 +58,12 @@ body {
 
 .caixa-principal {
     max-width: 600px;
-    margin: 0 auto 10px;
+    margin: 0 auto 0;
     background-color: var(--cor-fundo);
     padding: 25px 20px 15px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    flex: 0 0 auto;
 }
 
 h1 {

@@ -1,0 +1,85 @@
+/* Resetando estilos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* Caixa principal que contém o formulário */
+.caixa-principal {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Estilo do título */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo para cada grupo de campo do formulário */
+.grupo-campo {
+    margin-bottom: 15px;
+}
+
+/* Estilo para as etiquetas dos campos */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+/* Estilo para campos de entrada e seleção */
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilo específico para o checkbox */
+.caixa-selecao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.caixa-selecao input {
+    width: auto;
+}
+
+/* Estilo do botão */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #25d366; /* Cor do WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Efeito quando passa o mouse no botão */
+button:hover {
+    background-color: #128c7e;
+}
+
+/* Ajustes para telas menores (celular) */
+@media (max-width: 480px) {
+    .caixa-principal {
+        padding: 15px;
+    }
+}

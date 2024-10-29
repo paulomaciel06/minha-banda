@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Banda - Formulário de Contato</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="caixa-principal">
+        <h1>Faça seu Orçamento</h1>
+        
+        <!-- Formulário principal -->
+        <form id="formularioOrcamento">
+            <div class="grupo-campo">
+                <label for="dataEvento">Data do Evento:</label>
+                <input type="date" id="dataEvento" required>
+            </div>
+
+            <div class="grupo-campo">
+                <label for="horarioEvento">Horário:</label>
+                <input type="time" id="horarioEvento" required>
+            </div>
+
+            <div class="grupo-campo">
+                <label for="localEvento">Local:</label>
+                <input type="text" id="localEvento" placeholder="Digite o endereço do evento" required>
+            </div>
+
+            <div class="grupo-campo">
+                <label for="tipoShow">Formato do Show:</label>
+                <select id="tipoShow" required>
+                    <option value="acustico">Acústico</option>
+                    <option value="completo">Banda Completa</option>
+                </select>
+            </div>
+
+            <div class="grupo-campo caixa-selecao">
+                <input type="checkbox" id="equipamentoSom">
+                <label for="equipamentoSom">Precisa levar equipamento de som?</label>
+            </div>
+
+            <button type="submit">Enviar no WhatsApp</button>
+        </form>
+    </div>
+    <script src="codigo.js"></script>
+</body>
+</html>

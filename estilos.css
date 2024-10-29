@@ -1,3 +1,21 @@
+:root {
+    --cor-principal: #000000;
+    --cor-secundaria: #333333;
+    --cor-fundo: #ffffff;
+    --cor-borda: #e0e0e0;
+    --espacamento-padrao: 15px;
+    --fonte-principal: 'Gill Sans', 'Gill Sans MT', 'Calibri Light', sans-serif;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
 body {
     font-family: var(--fonte-principal);
     background-color: #f8f8f8;
@@ -6,22 +24,225 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.cabecalho {
+    background-color: var(--cor-fundo);
+    padding: 0 5px 5px;
+    border-bottom: 1px solid var(--cor-borda);
+    margin-bottom: 10px;
+}
+
+.logo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo {
+    max-width: 450px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+    margin-top: -40px; /* Ajuste este valor conforme necessário */
+    margin-bottom: -30px; /* Ajuste este valor conforme necessário */
+}
+
+.logo:hover {
+    transform: scale(1.02);
 }
 
 .caixa-principal {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto var(--espacamento-padrao);
     background-color: var(--cor-fundo);
-    padding: 25px 30px 10px;
+    padding: 25px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    flex: none; /* Esta é a mudança principal */
+    flex-grow: 1;
+}
+
+h1 {
+    color: var(--cor-principal);
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin: -15px 0 25px;
+    font-weight: 300;
+}
+
+.grupo-campo {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--cor-secundaria);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+label i {
+    margin-right: 8px;
+    color: var(--cor-principal);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: var(--fonte-principal);
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+input:hover, select:hover {
+    background-color: #ffffff;
+    border-color: #999;
+}
+
+input:focus, select:focus {
+    background-color: #ffffff;
+    border-color: var(--cor-principal);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--cor-principal); /* Mudado para preto */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: var(--fonte-principal);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajustada a cor da sombra */
+}
+
+button:hover {
+    background-color: var(--cor-secundaria); /* Mudado para cinza escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajustada a cor da sombra */
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+.caixa-selecao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.caixa-selecao input {
+    width: auto;
+}
+
+/* Ajuste estas partes */
+
+.privacidade {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 3px; /* Reduzido de 20px */
+    margin-bottom: 0; /* Garante que não há margem embaixo */
+    padding: 0 5px;
+}
+
+.caixa-principal {
+    max-width: 600px;
+    margin: 0 auto 10px;
+    background-color: var(--cor-fundo);
+    padding: 25px 20px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    /* Removido o flex-grow: 1 */
 }
 
 .rodape {
     background-color: var(--cor-fundo);
-    padding: 5px;
+    padding: 10px; /* Reduzido de 15px */
     text-align: center;
     border-top: 1px solid var(--cor-borda);
-    margin-top: 0;
+    margin-top: auto;
+}
+
+/* O resto do CSS permanece igual */
+.redes-sociais {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.icone-social {
+    color: var(--cor-principal);
+    font-size: 22px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icone-social:hover {
+    color: var(--cor-secundaria);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.copyright {
+    color: var(--cor-secundaria);
+    font-size: 12px;
+    margin: 0;
+    font-weight: 400;
+}
+
+@media (max-width: 480px) {
+    .caixa-principal {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .logo {
+        max-width: 380px;
+    }
+
+    .grupo-campo {
+        margin-bottom: 15px;
+    }
+
+    input, select {
+        padding: 10px;
+    }
+
+    button {
+        padding: 12px;
+    }
 }

@@ -21,7 +21,7 @@
 
     <div class="caixa-principal fade-in">
         <h1>Solicite seu orçamento</h1>
-        <p class="subtitulo">Preencha os dados abaixo para receber um orçamento</p>
+        <p class="subtitulo">Preencha os dados abaixo para receber um orçamento personalizado para seu evento</p>
         
         <form id="formularioOrcamento">
             <div class="grupo-campo">
@@ -33,9 +33,9 @@
 
             <div class="grupo-campo">
                 <label for="horarioEvento">
-                    <i class="fas fa-clock"></i> Horário:
+                    <i class="fas fa-clock"></i> Horário (opcional):
                 </label>
-                <select id="horarioEvento" required>
+                <select id="horarioEvento">
                     <option value="">Selecione o horário</option>
                     <option value="12:00">12h</option>
                     <option value="13:00">13h</option>
@@ -52,12 +52,17 @@
                 </select>
             </div>
 
-            <div class="grupo-campo">
-                <label for="localEvento">
-                    <i class="fas fa-map-marker-alt"></i> Local:
-                </label>
-                <input type="text" id="localEvento" placeholder="Digite o endereço do evento" required>
-            </div>
+            <!-- Apenas a parte do select de local muda -->
+<div class="grupo-campo">
+    <label for="localEvento">
+        <i class="fas fa-map-marker-alt"></i> Local:
+    </label>
+    <select id="localSelect" required>
+        <option value="João Pessoa" selected>João Pessoa</option>
+        <option value="outros">Outros</option>
+    </select>
+    <input type="text" id="localOutro" placeholder="Digite o local do evento" style="display: none;">
+</div>
 
             <div class="grupo-campo">
                 <label for="tipoShow">
@@ -88,7 +93,7 @@
 
     <footer class="rodape fade-in">
         <div class="redes-sociais">
-            <a href="https://www.instagram.com/paulopmaciel" class="icone-social">
+            <a href="https://www.instagram.com/seu.perfil" class="icone-social">
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="#" class="icone-social">

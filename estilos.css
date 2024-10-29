@@ -47,8 +47,8 @@ body {
     display: block;
     margin: 0 auto;
     transition: transform 0.3s ease;
-    margin-top: -40px; /* Ajuste este valor conforme necessário */
-    margin-bottom: -30px; /* Ajuste este valor conforme necessário */
+    margin-top: -40px;
+    margin-bottom: -30px;
 }
 
 .logo:hover {
@@ -57,12 +57,11 @@ body {
 
 .caixa-principal {
     max-width: 600px;
-    margin: 0 auto var(--espacamento-padrao);
+    margin: 0 auto 10px;
     background-color: var(--cor-fundo);
-    padding: 25px 30px;
+    padding: 25px 20px 15px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    flex-grow: 1;
 }
 
 h1 {
@@ -126,7 +125,7 @@ input:focus, select:focus {
 button {
     width: 100%;
     padding: 15px;
-    background-color: var(--cor-principal); /* Mudado para preto */
+    background-color: var(--cor-principal);
     color: white;
     border: none;
     border-radius: 8px;
@@ -139,15 +138,14 @@ button {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajustada a cor da sombra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: var(--cor-secundaria); /* Mudado para cinza escuro */
+    background-color: var(--cor-secundaria);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajustada a cor da sombra */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 
 button:active {
     transform: translateY(0);
@@ -159,40 +157,30 @@ button:active {
     gap: 10px;
 }
 
-.caixa-selecao input {
-    width: auto;
+.caixa-selecao input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--cor-principal);
+    cursor: pointer;
 }
-
-/* Ajuste estas partes */
 
 .privacidade {
     text-align: center;
     font-size: 12px;
     color: #999;
-    margin-top: 3px; /* Reduzido de 20px */
-    margin-bottom: 0; /* Garante que não há margem embaixo */
+    margin-top: 3px;
+    margin-bottom: 0;
     padding: 0 5px;
-}
-
-.caixa-principal {
-    max-width: 600px;
-    margin: 0 auto 10px;
-    background-color: var(--cor-fundo);
-    padding: 25px 20px 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    /* Removido o flex-grow: 1 */
 }
 
 .rodape {
     background-color: var(--cor-fundo);
-    padding: 10px; /* Reduzido de 15px */
+    padding: 10px;
     text-align: center;
     border-top: 1px solid var(--cor-borda);
-    margin-top: auto;
+    margin-top: 0;
 }
 
-/* O resto do CSS permanece igual */
 .redes-sociais {
     margin-bottom: 15px;
     display: flex;

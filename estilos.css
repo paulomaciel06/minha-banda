@@ -1,4 +1,4 @@
-/* Ajuste estas partes */
+/* Ajuste apenas estas partes */
 
 body {
     font-family: var(--fonte-principal);
@@ -8,19 +8,18 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    gap: 0; /* Adicione esta linha */
+    justify-content: flex-start; /* Adicione esta linha */
 }
 
 .caixa-principal {
     max-width: 600px;
-    margin: 0 auto 0; /* Removido margin-bottom */
+    margin: 0 auto;
     background-color: var(--cor-fundo);
     padding: 25px 30px 10px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    flex-grow: 0; /* Mudado de 1 para 0 */
+    flex-grow: 0; /* Garante que não vai crescer */
+    flex-shrink: 0; /* Adicione esta linha */
 }
 
 .rodape {
@@ -28,5 +27,20 @@ body {
     padding: 5px;
     text-align: center;
     border-top: 1px solid var(--cor-borda);
-    margin-top: 0; /* Adicionado margin-top: 0 */
+    margin-top: 0; /* Garante que não há espaço acima */
+}
+
+@media (max-width: 480px) {
+    .caixa-principal {
+        margin: 10px;
+        padding: 15px 20px 10px;
+    }
+    
+    .privacidade {
+        margin-bottom: 5px; /* Reduz o espaço antes do rodapé */
+    }
+    
+    .rodape {
+        margin-top: 0;
+    }
 }

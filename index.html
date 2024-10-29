@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paulo Maciel - Contato</title>
+    <meta name="description" content="Paulo Maciel - Música ao vivo para seu evento. Solicite um orçamento personalizado para shows acústicos ou com banda completa.">
+    <meta property="og:title" content="Paulo Maciel - Música ao Vivo">
+    <meta property="og:description" content="Solicite um orçamento personalizado para seu evento">
+    <meta property="og:image" content="https://seusite.com/logo.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -16,6 +21,7 @@
 
     <div class="caixa-principal fade-in">
         <h1>Solicite seu orçamento</h1>
+        <p class="subtitulo">Preencha os dados abaixo para receber uma proposta personalizada</p>
         
         <form id="formularioOrcamento">
             <div class="grupo-campo">
@@ -29,7 +35,21 @@
                 <label for="horarioEvento">
                     <i class="fas fa-clock"></i> Horário:
                 </label>
-                <input type="time" id="horarioEvento" required>
+                <select id="horarioEvento" required>
+                    <option value="">Selecione o horário</option>
+                    <option value="12:00">12h</option>
+                    <option value="13:00">13h</option>
+                    <option value="14:00">14h</option>
+                    <option value="15:00">15h</option>
+                    <option value="16:00">16h</option>
+                    <option value="17:00">17h</option>
+                    <option value="18:00">18h</option>
+                    <option value="19:00">19h</option>
+                    <option value="20:00">20h</option>
+                    <option value="21:00">21h</option>
+                    <option value="22:00">22h</option>
+                    <option value="23:00">23h</option>
+                </select>
             </div>
 
             <div class="grupo-campo">
@@ -60,9 +80,27 @@
                 <i class="fab fa-whatsapp"></i> Enviar no WhatsApp
             </button>
         </form>
+
+        <div class="privacidade">
+            <p>Seus dados estão seguros e não serão compartilhados.</p>
+        </div>
     </div>
 
     <footer class="rodape fade-in">
         <div class="redes-sociais">
-            <a href="https://www.instagram.com/paulopmaciel" class="icone-social"><i class="fab fa-instagram"></i></a>
-            <a href="#
+            <a href="https://www.instagram.com/paulopmaciel" class="icone-social">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="icone-social">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="icone-social">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <p class="copyright">© 2024 Paulo Maciel. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="codigo.js"></script>
+</body>
+</html>

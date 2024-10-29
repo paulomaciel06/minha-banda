@@ -26,7 +26,6 @@ body {
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    justify-content: flex-start;
 }
 
 .cabecalho {
@@ -48,8 +47,8 @@ body {
     display: block;
     margin: 0 auto;
     transition: transform 0.3s ease;
-    margin-top: -40px;
-    margin-bottom: -30px;
+    margin-top: -40px; /* Ajuste este valor conforme necessário */
+    margin-bottom: -30px; /* Ajuste este valor conforme necessário */
 }
 
 .logo:hover {
@@ -58,12 +57,12 @@ body {
 
 .caixa-principal {
     max-width: 600px;
-    margin: 0 auto 0;
+    margin: 0 auto var(--espacamento-padrao);
     background-color: var(--cor-fundo);
-    padding: 25px 20px 15px;
+    padding: 25px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    flex: 0 0 auto;
+    flex-grow: 1;
 }
 
 h1 {
@@ -110,31 +109,6 @@ input, select {
     font-family: var(--fonte-principal);
     background-color: #fafafa;
     transition: all 0.3s ease;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    min-height: 42px;
-}
-
-input[type="date"] {
-    -webkit-appearance: none;
-    min-height: 42px;
-    padding: 8px 12px;
-}
-
-select {
-    min-height: 42px;
-    padding: 8px 12px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333333' d='M6 8.825L1.175 4 2.238 2.938 6 6.7l3.763-3.762L10.825 4z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 30px;
-}
-
-input[type="text"] {
-    min-height: 42px;
-    padding: 8px 12px;
 }
 
 input:hover, select:hover {
@@ -152,7 +126,7 @@ input:focus, select:focus {
 button {
     width: 100%;
     padding: 15px;
-    background-color: var(--cor-principal);
+    background-color: var(--cor-principal); /* Mudado para preto */
     color: white;
     border: none;
     border-radius: 8px;
@@ -165,15 +139,15 @@ button {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajustada a cor da sombra */
 }
 
 button:hover {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-secundaria); /* Mudado para cinza escuro */
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajustada a cor da sombra */
 }
+
 
 button:active {
     transform: translateY(0);
@@ -185,34 +159,40 @@ button:active {
     gap: 10px;
 }
 
-.caixa-selecao input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    min-height: auto;
-    accent-color: var(--cor-principal);
-    cursor: pointer;
-    -webkit-appearance: checkbox;
-    -moz-appearance: checkbox;
-    appearance: checkbox;
+.caixa-selecao input {
+    width: auto;
 }
+
+/* Ajuste estas partes */
 
 .privacidade {
     text-align: center;
     font-size: 12px;
     color: #999;
-    margin-top: 3px;
-    margin-bottom: 0;
+    margin-top: 3px; /* Reduzido de 20px */
+    margin-bottom: 0; /* Garante que não há margem embaixo */
     padding: 0 5px;
+}
+
+.caixa-principal {
+    max-width: 600px;
+    margin: 0 auto 10px;
+    background-color: var(--cor-fundo);
+    padding: 25px 20px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    /* Removido o flex-grow: 1 */
 }
 
 .rodape {
     background-color: var(--cor-fundo);
-    padding: 10px;
+    padding: 10px; /* Reduzido de 15px */
     text-align: center;
     border-top: 1px solid var(--cor-borda);
-    margin-top: 0;
+    margin-top: auto;
 }
 
+/* O resto do CSS permanece igual */
 .redes-sociais {
     margin-bottom: 15px;
     display: flex;

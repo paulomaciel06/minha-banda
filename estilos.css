@@ -30,9 +30,9 @@ body {
 
 .cabecalho {
     background-color: var(--cor-fundo);
-    padding: 30px 20px;
+    padding: 0 5px 5px;
     border-bottom: 1px solid var(--cor-borda);
-    margin-bottom: var(--espacamento-padrao);
+    margin-bottom: 10px;
 }
 
 .logo-container {
@@ -46,13 +46,20 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
+    transition: transform 0.3s ease;
+    margin-top: -40px; /* Ajuste este valor conforme necessário */
+    margin-bottom: -30px; /* Ajuste este valor conforme necessário */
+}
+
+.logo:hover {
+    transform: scale(1.02);
 }
 
 .caixa-principal {
     max-width: 600px;
     margin: 0 auto var(--espacamento-padrao);
     background-color: var(--cor-fundo);
-    padding: 30px;
+    padding: 25px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     flex-grow: 1;
@@ -63,8 +70,17 @@ h1 {
     font-weight: 300;
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 0;
     font-size: 20px;
     letter-spacing: 0.5px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin: -15px 0 25px;
+    font-weight: 300;
 }
 
 .grupo-campo {
@@ -91,19 +107,26 @@ input, select {
     border-radius: 8px;
     font-size: 14px;
     font-family: var(--fonte-principal);
+    background-color: #fafafa;
     transition: all 0.3s ease;
 }
 
+input:hover, select:hover {
+    background-color: #ffffff;
+    border-color: #999;
+}
+
 input:focus, select:focus {
+    background-color: #ffffff;
     border-color: var(--cor-principal);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
 }
 
 button {
     width: 100%;
     padding: 15px;
-    background-color: var(--cor-principal);
+    background-color: var(--cor-principal); /* Mudado para preto */
     color: white;
     border: none;
     border-radius: 8px;
@@ -116,11 +139,18 @@ button {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajustada a cor da sombra */
 }
 
 button:hover {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-secundaria); /* Mudado para cinza escuro */
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajustada a cor da sombra */
+}
+
+
+button:active {
+    transform: translateY(0);
 }
 
 .caixa-selecao {
@@ -133,6 +163,14 @@ button:hover {
     width: auto;
 }
 
+.privacidade {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
 .rodape {
     background-color: var(--cor-fundo);
     padding: 15px;
@@ -143,18 +181,26 @@ button:hover {
 
 .redes-sociais {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
 }
 
 .icone-social {
     color: var(--cor-principal);
-    font-size: 24px;
-    margin: 0 15px;
+    font-size: 22px;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .icone-social:hover {
     color: var(--cor-secundaria);
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .copyright {

@@ -13,7 +13,7 @@
 }
 
 .fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.9s ease-out forwards;
 }
 
 body {
@@ -31,9 +31,9 @@ body {
 
 .cabecalho {
     background-color: var(--cor-fundo);
-    padding: 0 5px 5px;
-    border-bottom: 1px solid var(--cor-borda);
-    margin-bottom: 10px;
+    padding: 0 20px 20px;
+    border-bottom: 5px solid var(--cor-borda);
+    margin-bottom: 5px;
 }
 
 .logo-container {
@@ -48,8 +48,8 @@ body {
     display: block;
     margin: 0 auto;
     transition: transform 0.3s ease;
-    margin-top: -40px;
-    margin-bottom: -30px;
+    margin-top: 0px;
+    margin-bottom: -10px;
 }
 
 .logo:hover {
@@ -60,7 +60,7 @@ body {
     max-width: 600px;
     margin: 0 auto 0;
     background-color: var(--cor-fundo);
-    padding: 25px 20px 15px;
+    padding: 10px 20px 15px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     flex: 0 0 auto;

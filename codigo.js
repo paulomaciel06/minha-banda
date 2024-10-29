@@ -24,7 +24,7 @@ document.getElementById('formularioOrcamento').addEventListener('submit', functi
 Aguardo seu retorno! 😊`;
 
     // Seu número de WhatsApp (substitua pelo seu, mantendo o código do país e DDD)
-    const numeroWhatsapp = '5511999999999';
+    const numeroWhatsapp = '5583999196364';
 
     // Codifica a mensagem para URL
     const mensagemCodificada = encodeURIComponent(mensagemWhatsapp);

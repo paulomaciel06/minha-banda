@@ -3,32 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Banda - Formulário de Contato</title>
+    <title>Paulo Maciel - Contato</title>
     <link rel="stylesheet" href="estilos.css">
+    <!-- Adicionando ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="caixa-principal">
+    <header class="cabecalho">
+        <div class="logo-container">
+            <img src="logo.png" alt="Paulo Maciel" class="logo fade-in">
+        </div>
+    </header>
+
+    <div class="caixa-principal fade-in">
         <h1>Faça seu Orçamento</h1>
         
-        <!-- Formulário principal -->
         <form id="formularioOrcamento">
             <div class="grupo-campo">
-                <label for="dataEvento">Data do Evento:</label>
+                <label for="dataEvento">
+                    <i class="fas fa-calendar"></i> Data do Evento:
+                </label>
                 <input type="date" id="dataEvento" required>
             </div>
 
             <div class="grupo-campo">
-                <label for="horarioEvento">Horário:</label>
+                <label for="horarioEvento">
+                    <i class="fas fa-clock"></i> Horário:
+                </label>
                 <input type="time" id="horarioEvento" required>
             </div>
 
             <div class="grupo-campo">
-                <label for="localEvento">Local:</label>
+                <label for="localEvento">
+                    <i class="fas fa-map-marker-alt"></i> Local:
+                </label>
                 <input type="text" id="localEvento" placeholder="Digite o endereço do evento" required>
             </div>
 
             <div class="grupo-campo">
-                <label for="tipoShow">Formato do Show:</label>
+                <label for="tipoShow">
+                    <i class="fas fa-music"></i> Formato do Show:
+                </label>
                 <select id="tipoShow" required>
                     <option value="acustico">Acústico</option>
                     <option value="completo">Banda Completa</option>
@@ -37,12 +52,26 @@
 
             <div class="grupo-campo caixa-selecao">
                 <input type="checkbox" id="equipamentoSom">
-                <label for="equipamentoSom">Precisa levar equipamento de som?</label>
+                <label for="equipamentoSom">
+                    <i class="fas fa-volume-up"></i> Precisa levar equipamento de som?
+                </label>
             </div>
 
-            <button type="submit">Enviar no WhatsApp</button>
+            <button type="submit">
+                <i class="fab fa-whatsapp"></i> Enviar no WhatsApp
+            </button>
         </form>
     </div>
+
+    <footer class="rodape fade-in">
+        <div class="redes-sociais">
+            <a href="#" class="icone-social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="icone-social"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="icone-social"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">© 2024 Paulo Maciel. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="codigo.js"></script>
 </body>
 </html>

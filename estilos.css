@@ -357,8 +357,7 @@ button:active {
 
 .menu-navegacao {
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 20px;
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -392,6 +391,7 @@ button:active {
 @media (max-width: 768px) {
     .menu-navegacao {
         right: 10px;
+        bottom: 10px;
     }
     
     .botao-flutuante {

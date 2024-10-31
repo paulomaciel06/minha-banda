@@ -13,139 +13,324 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="cabecalho">
-        <div class="logo-container">
-            <img src="./logo.png" alt="Paulo Maciel" class="logo fade-in">
+    <div class="pagina-wrapper">
+        <!-- Seção 1: Logo e Botões -->
+        <div class="secao-inicial">
+            <header class="cabecalho">
+                <div class="logo-container">
+                    <img src="./logo.png" alt="Paulo Maciel" class="logo fade-in">
+                </div>
+            </header>
+
+            <div class="botoes-principais fade-in">
+                <button class="botao-navegacao" onclick="rolarPara('formularioContainer')">
+                    <i class="fas fa-file-invoice"></i> Solicitar Orçamento
+                </button>
+                <button class="botao-navegacao" onclick="rolarPara('agenda')">
+                    <i class="fas fa-calendar-alt"></i> Agenda de Shows
+                </button>
+                
+                <div class="botoes-sociais">
+                    <a href="https://www.instagram.com/paulopmaciel" class="botao-navegacao botao-social" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.youtube.com/c/XoteNós3oficial" class="botao-navegacao botao-social" target="_blank">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
 
-    <div class="caixa-principal fade-in">
-        <h1>Solicite seu orçamento</h1>
-        <p class="subtitulo">Preencha os dados abaixo para receber um orçamento personalizado para seu evento</p>
-        
-        <form id="formularioOrcamento">
-            <div class="grupo-campo">
-                <label for="dataEvento">
-                    <i class="fas fa-calendar"></i> Data do Evento:
-                </label>
-                <input type="date" id="dataEvento" required>
+        <!-- Seção 2: Formulário -->
+        <div class="caixa-principal fade-in" id="formularioContainer">
+            <h1>Solicite seu orçamento</h1>
+            <p class="subtitulo">Preencha os dados abaixo para receber um orçamento personalizado para seu evento</p>
+            
+            <form id="formularioOrcamento" onsubmit="enviarWhatsApp(event)">
+                <div class="grupo-campo">
+                    <label for="dataEvento">
+                        <i class="fas fa-calendar"></i> Data do Evento:
+                    </label>
+                    <input type="date" id="dataEvento" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="horarioEvento">
+                        <i class="fas fa-clock"></i> Horário (opcional):
+                    </label>
+                    <select id="horarioEvento">
+                        <option value="">Selecione o horário</option>
+                        <option value="12:00">12h</option>
+                        <option value="13:00">13h</option>
+                        <option value="14:00">14h</option>
+                        <option value="15:00">15h</option>
+                        <option value="16:00">16h</option>
+                        <option value="17:00">17h</option>
+                        <option value="18:00">18h</option>
+                        <option value="19:00">19h</option>
+                        <option value="20:00">20h</option>
+                        <option value="21:00">21h</option>
+                        <option value="22:00">22h</option>
+                        <option value="23:00">23h</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="localEvento">
+                        <i class="fas fa-map-marker-alt"></i> Local:
+                    </label>
+                    <select id="localSelect" required>
+                        <option value="João Pessoa" selected>João Pessoa</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    <input type="text" id="localOutro" placeholder="Digite o local do evento" style="display: none;">
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="tipoShow">
+                        <i class="fas fa-music"></i> Formato do Show:
+                    </label>
+                    <select id="tipoShow" required>
+                        <option value="acustico">Acústico</option>
+                        <option value="completo">Banda Completa</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo caixa-selecao">
+                    <input type="checkbox" id="equipamentoSom">
+                    <label for="equipamentoSom">
+                        <i class="fas fa-volume-up"></i> Precisa levar equipamento de som?
+                    </label>
+                </div>
+
+                <button type="submit">
+                    <i class="fab fa-whatsapp"></i> Enviar no WhatsApp
+                </button>
+            </form>
+
+            <div class="privacidade">
+                <p>Seus dados estão seguros e não serão compartilhados.</p>
+            </div>
+        </div>
+
+        <!-- Seção 3: Agenda -->
+        <div class="caixa-principal agenda-container fade-in" id="agenda">
+            <h1>Agenda de Shows</h1>
+            <p class="subtitulo">Confira nossa programação de shows e eventos</p>
+            
+            <!-- Navegação dos meses -->
+            <div class="navegacao-meses">
+                <button class="botao-mes" onclick="mudarMes('anterior')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 id="mes-atual">Novembro 2024</h2>
+                <button class="botao-mes" onclick="mudarMes('proximo')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
-            <div class="grupo-campo">
-                <label for="horarioEvento">
-                    <i class="fas fa-clock"></i> Horário (opcional):
-                </label>
-                <select id="horarioEvento">
-                    <option value="">Selecione o horário</option>
-                    <option value="12:00">12h</option>
-                    <option value="13:00">13h</option>
-                    <option value="14:00">14h</option>
-                    <option value="15:00">15h</option>
-                    <option value="16:00">16h</option>
-                    <option value="17:00">17h</option>
-                    <option value="18:00">18h</option>
-                    <option value="19:00">19h</option>
-                    <option value="20:00">20h</option>
-                    <option value="21:00">21h</option>
-                    <option value="22:00">22h</option>
-                    <option value="23:00">23h</option>
-                </select>
+            <!-- Container dos meses -->
+            <div class="meses-container">
+                <!-- Novembro 2024 -->
+                <div class="mes-container" data-mes="novembro2024">
+                    <div class="eventos">
+                        <div class="evento">
+                            <div class="data">01/11</div>
+                            <div class="detalhes">
+                                <h3>Festa Privada</h3>
+                                <p>Local: Jacumã</p>
+                                <p>Horário: 21h</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">02/11</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Pérola Recepções</p>
+                                <p>Horário: 00:30h</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">14/11</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Marriage</p>
+                                <p>Horário: 22h</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">15/11</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Unique Beach</p>
+                                <p>Horário: 17:30h</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">17/11</div>
+                            <div class="detalhes">
+                                <h3>Evento Corporativo</h3>
+                                <p>Local: Marriage</p>
+                                <p>Horário: 20h</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">19/11</div>
+                            <div class="detalhes">
+                                <h3>Noivei e Agora</h3>
+                                <p>Horário: Noite</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">22/11</div>
+                            <div class="detalhes">
+                                <h3>Casamento MEX</h3>
+                                <p>Local: Porto Pinheiro</p>
+                                <p>Horário: 15h (a confirmar)</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">23/11</div>
+                            <div class="detalhes">
+                                <h3>Luau</h3>
+                                <p>Local: Intermares</p>
+                                <p>Horário: 18h</p>
+                                <p>Formato: Trio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dezembro 2024 -->
+                <div class="mes-container" data-mes="dezembro2024" style="display: none;">
+                    <div class="eventos">
+                        <div class="evento">
+                            <div class="data">07/12</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Pérola Recepções</p>
+                                <p>Horário: 00:30h (08/12)</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">14/12</div>
+                            <div class="detalhes">
+                                <h3>Aniversário Wilson</h3>
+                                <p>Horário: 16h</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">21/12</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Porto Castelo</p>
+                                <p>Horário: 19:30h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Janeiro 2025 -->
+                <div class="mes-container" data-mes="janeiro2025" style="display: none;">
+                    <div class="eventos">
+                        <div class="evento">
+                            <div class="data">04/01</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Kasa da Falésia</p>
+                                <p>Horário: 18h</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">11/01</div>
+                            <div class="detalhes">
+                                <h3>Casamento MEX</h3>
+                                <p>Local: Porto Castelo</p>
+                                <p>Horário: 21h</p>
+                                <p>Formato: Banda Completa</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">12/01</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Maison Filipeia</p>
+                                <p>Horário: 20h</p>
+                            </div>
+                        </div>
+
+                        <div class="evento">
+                            <div class="data">18/01</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Vintage Jardins</p>
+                                <p>Horário: 21h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fevereiro 2025 -->
+                <div class="mes-container" data-mes="fevereiro2025" style="display: none;">
+                    <div class="eventos">
+                        <div class="evento">
+                            <div class="data">01/02</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Celebration</p>
+                                <p>Horário: 15h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Março 2025 -->
+                <div class="mes-container" data-mes="marco2025" style="display: none;">
+                    <div class="eventos">
+                        <div class="evento">
+                            <div class="data">01/03</div>
+                            <div class="detalhes">
+                                <h3>Casamento</h3>
+                                <p>Local: Casa Roccia</p>
+                                <p>Horário: 22h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="grupo-campo">
-                <label for="localEvento">
-                    <i class="fas fa-map-marker-alt"></i> Local:
-                </label>
-                <select id="localSelect" required>
-                    <option value="João Pessoa" selected>João Pessoa</option>
-                    <option value="outros">Outros</option>
-                </select>
-                <input type="text" id="localOutro" placeholder="Digite o local do evento" style="display: none;">
-            </div>
-
-            <div class="grupo-campo">
-                <label for="tipoShow">
-                    <i class="fas fa-music"></i> Formato do Show:
-                </label>
-                <select id="tipoShow" required>
-                    <option value="acustico">Acústico</option>
-                    <option value="completo">Banda Completa</option>
-                </select>
-            </div>
-
-            <div class="grupo-campo caixa-selecao">
-                <input type="checkbox" id="equipamentoSom">
-                <label for="equipamentoSom">
-                    <i class="fas fa-volume-up"></i> Precisa levar equipamento de som?
-                </label>
-            </div>
-
-            <button type="submit">
-                <i class="fab fa-whatsapp"></i> Enviar no WhatsApp
-            </button>
-        </form>
-
-        <div class="privacidade">
-            <p>Seus dados estão seguros e não serão compartilhados.</p>
         </div>
     </div>
 
-    <footer class="rodape fade-in">
-        <div class="redes-sociais">
-            <a href="https://www.instagram.com/paulopmaciel " class="icone-social">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="icone-social">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" class="icone-social">
-                <i class="fab fa-youtube"></i>
-            </a>
-        </div>
-        <p class="copyright">© 2024 Paulo Maciel. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Chat Bot -->
-    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2024/10/29/18/20241029180731-CP7DK076.js"></script>
-    <script>
-        window.botpressWebChat.init({
-            hideWidget: false,
-            disableAnimations: false,
-            showPoweredBy: false,
-            closeLabel: 'Fechar',
-            messagingUrl: 'https://messaging.botpress.cloud',
-            composerPlaceholder: 'Digite sua mensagem...',
-            backgroundColor: '#f5f5f5',
-            textColorOnBackground: '#333333',
-            foregroundColor: '#000000',
-            textColorOnForeground: '#ffffff',
-            containerWidth: '100%',
-            layoutWidth: '100%',
-            showConversationsButton: false,
-            enableTranscriptDownload: false,
-            botName: 'Assistente Paulo',
-            avatarUrl: '',
-            className: 'webchat-custom',
-            stylesheet: `
-                .webchat-custom {
-                    width: 90% !important;
-                    max-width: 400px !important;
-                    margin: 0 auto !important;
-                    border-radius: 10px !important;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-                }
-                @media (max-width: 768px) {
-                    .webchat-custom {
-                        width: 100% !important;
-                        height: 100% !important;
-                        max-width: none !important;
-                        border-radius: 0 !important;
-                    }
-                }
-            `
-        });
-    </script>
+    <!-- Menu de Navegação Flutuante -->
+    <div class="menu-navegacao fade-in">
+        <button class="botao-flutuante" onclick="rolarPara('top')" title="Voltar ao topo">
+            <i class="fas fa-home"></i>
+        </button>
+        <button class="botao-flutuante" onclick="rolarPara('formularioContainer')" title="Ir para Orçamento">
+            <i class="fas fa-file-invoice"></i>
+        </button>
+        <button class="botao-flutuante" onclick="rolarPara('agenda')" title="Ir para Agenda">
+            <i class="fas fa-calendar-alt"></i>
+        </button>
+    </div>
 
     <script src="./codigo.js"></script>
 </body>

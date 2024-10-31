@@ -36,14 +36,14 @@ body {
 }
 
 .logo-container {
-    max-width: 800px;
+    max-width: 450px;
     margin: 0 auto;
     text-align: center;
     padding: 0 20px;
 }
 
 .logo {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -54,8 +54,13 @@ body {
 }
 
 @media (max-width: 768px) {
+    .logo-container {
+        max-width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
     .logo {
-        width: 90%;
         padding: 10px;
     }
 }

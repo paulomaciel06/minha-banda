@@ -473,23 +473,51 @@ function goToNextStep() {
 function handleWhatsAppClick(event) {
     event.preventDefault();
     
-    // Salva o estado atual
-    localStorage.setItem('lastStep', 'final');
+    // Completa a barra de progresso
+    const progressBar = document.querySelector('.progress-bar');
+    progressBar.style.width = '100%';
     
+    // Monta a mensagem
     const message = encodeURIComponent(generateWhatsAppMessage());
-    const phoneNumber = 'seu-numero'; // coloque seu número aqui
+    const phoneNumber = 'seu-numero'; // seu número com código do país
     
-    // Detecta se é iOS
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    // Detecta se é dispositivo móvel
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
     // Define a URL do WhatsApp
-    const whatsappUrl = isIOS
-        ? `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`
-        : `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+    const whatsappUrl = isMobile
+        ? `whatsapp://send?phone=${phoneNumber}&text=${message}`
+        : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
     
-    // Abre o WhatsApp
-    window.location = whatsappUrl;
+    // Abre em nova janela/aba
+    if (isMobile) {
+        // Para mobile, usa window.open com target _blank
+        const newWindow = window.open(whatsappUrl, '_blank');
+        
+        // Fallback caso o window.open seja bloqueado
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            window.location.href = whatsappUrl;
+        }
+    } else {
+        // Para desktop, sempre abre em nova aba
+        window.open(whatsappUrl, '_blank');
+    }
+    
+    return false;
 }
+
+// Atualiza os event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappButtons = document.querySelectorAll('.whatsapp-btn, .social-btn');
+    
+    whatsappButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleWhatsAppClick(e);
+            return false;
+        });
+    });
+});
 
 // Adicione isto ao início do seu arquivo
 document.addEventListener('DOMContentLoaded', function() {
@@ -550,9 +578,9 @@ function maskDate(input) {
         if (value.length > 8) value = value.slice(0, 8);
         
         if (value.length >= 4) {
-            value = value.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+            value = value.replace(/^(\d{2})(\d{2})(\d{4}).*/, '$1/$2/$3');
         } else if (value.length >= 2) {
-            value = value.replace(/(\d{2})(\d{2})?/, '$1/$2');
+            value = value.replace(/^(\d{2})(\d{2})?.*/, '$1/$2');
         }
         
         e.target.value = value;
@@ -566,17 +594,13 @@ function maskTime(input) {
         if (value.length > 4) value = value.slice(0, 4);
         
         if (value.length >= 2) {
-            value = value.replace(/(\d{2})(\d{2})?/, '$1:$2');
-        }
-        
-        // Validação de hora
-        let hours = parseInt(value.split(':')[0]);
-        if (hours > 23) value = '23' + value.slice(2);
-        
-        // Validação de minutos
-        if (value.length > 2) {
-            let minutes = parseInt(value.split(':')[1]);
-            if (minutes > 59) value = value.slice(0, 3) + '59';
+            let hours = value.slice(0, 2);
+            let minutes = value.slice(2);
+            
+            if (parseInt(hours) > 23) hours = '23';
+            if (parseInt(minutes) > 59) minutes = '59';
+            
+            value = hours + (minutes ? ':' + minutes : '');
         }
         
         e.target.value = value;
@@ -590,4 +614,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     dateInputs.forEach(input => maskDate(input));
     timeInputs.forEach(input => maskTime(input));
+});
+
+function showStep(step) {
+    const steps = document.querySelectorAll('.step');
+    steps.forEach(s => s.classList.remove('current-step'));
+
+    const currentStep = document.querySelector(`.step[data-step="${step}"]`);
+    currentStep.classList.add('current-step');
+
+    // Foco otimizado para iOS
+    setTimeout(() => {
+        const input = currentStep.querySelector('input');
+        if (input) {
+            // Força o foco e abre o teclado
+            input.readOnly = false;
+            input.focus();
+            input.click();
+            
+            // Específico para iOS
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                input.blur();
+                window.scrollTo(0, 0);
+                setTimeout(() => {
+                    input.focus();
+                }, 50);
+            }
+        }
+    }, 400);
+}
+
+// Inicialização específica para iOS
+document.addEventListener('DOMContentLoaded', function() {
+    // Previne zoom no iOS
+    document.addEventListener('touchstart', (e) => {
+        if (e.target.tagName === 'INPUT') {
+            e.target.style.fontSize = '16px';
+        }
+    });
+    
+    // Força teclado numérico no foco
+    const numericInputs = document.querySelectorAll('.date-input, .time-input');
+    numericInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.setAttribute('type', 'number');
+            this.click();
+        });
+    });
 });

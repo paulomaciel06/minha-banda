@@ -518,18 +518,48 @@ input::-webkit-inner-spin-button {
 
 .date-input,
 .time-input {
+    -webkit-appearance: none !important;
+    -moz-appearance: textfield !important;
+    appearance: none !important;
     font-size: 16px !important; /* Previne zoom no iOS */
-    text-align: center;
     padding: 15px !important;
-    border-radius: 8px;
+    text-align: center;
     width: 100%;
     max-width: 200px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background-color: white;
     margin: 0 auto;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
+    display: block;
+    
+    /* Específico para iOS */
+    pointer-events: auto !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
 }
 
-/* Esconde os controles nativos */
-input::-webkit-datetime-edit { padding: 0; }
-input::-webkit-calendar-picker-indicator { display: none; }
-input::-webkit-inner-spin-button { display: none; }
+/* Remove spinners do input number */
+.date-input::-webkit-outer-spin-button,
+.date-input::-webkit-inner-spin-button,
+.time-input::-webkit-outer-spin-button,
+.time-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Força teclado visível no iOS */
+@supports (-webkit-touch-callout: none) {
+    .date-input,
+    .time-input {
+        cursor: text !important;
+    }
+}
+
+/* Remove estilos nativos */
+input::-webkit-datetime-edit,
+input::-webkit-calendar-picker-indicator,
+input::-webkit-inner-spin-button,
+input::-webkit-clear-button {
+    display: none;
+    -webkit-appearance: none;
+}

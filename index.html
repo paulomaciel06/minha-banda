@@ -20,31 +20,31 @@
             </div>
             <div class="date-step">
                 <input 
-                    type="number" 
-                    pattern="[0-9]*"
-                    inputmode="numeric"
+                    type="tel"
                     class="date-input" 
                     id="dateInput"
-                    maxlength="8"
-                    placeholder="DD/MM/AAAA"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
+                    maxlength="10"
+                    placeholder="Digite a data"
                     autocomplete="off"
                     required
-                    enterkeyhint="next"
                 >
+                <div class="input-overlay"></div>
             </div>
             <div class="time-step">
                 <input 
-                    type="number"
-                    pattern="[0-9]*"
-                    inputmode="numeric"
+                    type="tel"
                     class="time-input" 
                     id="timeInput"
-                    maxlength="4"
-                    placeholder="HH:MM"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
+                    maxlength="5"
+                    placeholder="Digite a hora"
                     autocomplete="off"
                     required
-                    enterkeyhint="done"
                 >
+                <div class="input-overlay"></div>
             </div>
         </form>
         <div class="progress-bar">

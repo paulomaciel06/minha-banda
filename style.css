@@ -563,3 +563,55 @@ input::-webkit-clear-button {
     display: none;
     -webkit-appearance: none;
 }
+
+.date-step,
+.time-step {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.date-input,
+.time-input {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    font-size: 16px !important;
+    padding: 15px !important;
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Novo estilo para overlay */
+.input-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: text;
+}
+
+/* Específico para iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .date-input,
+    .time-input {
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Remove spinners */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

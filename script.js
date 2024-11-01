@@ -623,42 +623,47 @@ function showStep(step) {
     const currentStep = document.querySelector(`.step[data-step="${step}"]`);
     currentStep.classList.add('current-step');
 
-    // Foco otimizado para iOS
+    // Novo código para forçar foco no Safari iOS
     setTimeout(() => {
         const input = currentStep.querySelector('input');
         if (input) {
-            // Força o foco e abre o teclado
+            // Remove readonly temporariamente
             input.readOnly = false;
+            
+            // Força o scroll para o topo
+            window.scrollTo(0, 0);
+            
+            // Sequência de foco para iOS Safari
+            input.blur();
             input.focus();
             input.click();
             
-            // Específico para iOS
-            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                input.blur();
-                window.scrollTo(0, 0);
-                setTimeout(() => {
-                    input.focus();
-                }, 50);
-            }
+            // Tenta novamente após um pequeno delay
+            setTimeout(() => {
+                input.click();
+                input.focus();
+            }, 100);
         }
-    }, 400);
+    }, 300);
 }
 
-// Inicialização específica para iOS
+// Adicione este código para garantir o foco
 document.addEventListener('DOMContentLoaded', function() {
-    // Previne zoom no iOS
-    document.addEventListener('touchstart', (e) => {
-        if (e.target.tagName === 'INPUT') {
-            e.target.style.fontSize = '16px';
-        }
-    });
-    
-    // Força teclado numérico no foco
-    const numericInputs = document.querySelectorAll('.date-input, .time-input');
-    numericInputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.setAttribute('type', 'number');
-            this.click();
+    // Manipulador para overlay
+    document.querySelectorAll('.input-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            if (input) {
+                input.focus();
+                input.click();
+            }
         });
     });
+
+    // Previne comportamento padrão do Safari
+    document.addEventListener('touchstart', function(e) {
+        if (e.target.tagName === 'INPUT') {
+            e.target.focus();
+        }
+    }, false);
 });

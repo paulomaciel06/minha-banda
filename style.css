@@ -494,3 +494,24 @@ h2 {
 
 /* Adicione no head do HTML */
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+/* Ajustes para inputs em mobile */
+input[type="date"],
+input[type="time"],
+input[type="tel"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    font-size: 16px; /* Previne zoom em iOS */
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Remove spinners dos inputs numéricos */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

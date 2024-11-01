@@ -451,3 +451,94 @@ class FormularioOrcamento {
 document.addEventListener('DOMContentLoaded', () => {
     window.formulario = new FormularioOrcamento();
 });
+
+// Adicione esta função onde você muda de etapa
+function focusInput() {
+    setTimeout(() => {
+        const input = document.querySelector('.current-step input');
+        if (input) {
+            input.focus();
+            // Para dispositivos iOS
+            input.click();
+        }
+    }, 300);
+}
+
+// Chame esta função depois de mudar de etapa
+function goToNextStep() {
+    // ... seu código existente ...
+    focusInput();
+}
+
+function handleWhatsAppClick(event) {
+    event.preventDefault();
+    
+    // Salva o estado atual
+    localStorage.setItem('lastStep', 'final');
+    
+    const message = encodeURIComponent(generateWhatsAppMessage());
+    const phoneNumber = 'seu-numero'; // coloque seu número aqui
+    
+    // Detecta se é iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    
+    // Define a URL do WhatsApp
+    const whatsappUrl = isIOS
+        ? `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`
+        : `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+    
+    // Abre o WhatsApp
+    window.location = whatsappUrl;
+}
+
+// Adicione isto ao início do seu arquivo
+document.addEventListener('DOMContentLoaded', function() {
+    // Verifica se tem um estado salvo
+    const lastStep = localStorage.getItem('lastStep');
+    if (lastStep === 'final') {
+        showLastStep(); // função que mostra a última etapa
+        localStorage.removeItem('lastStep'); // limpa o estado
+    }
+});
+
+// Adicione esta função para persistir o estado
+function saveFormState() {
+    const currentStep = document.querySelector('.step.current-step');
+    if (currentStep) {
+        sessionStorage.setItem('currentStep', currentStep.dataset.step);
+    }
+}
+
+// Restaura o estado quando voltar do WhatsApp
+function restoreFormState() {
+    const savedStep = sessionStorage.getItem('currentStep');
+    if (savedStep) {
+        showStep(parseInt(savedStep));
+    }
+}
+
+// Adicione aos event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    restoreFormState();
+    
+    const whatsappBtn = document.querySelector('.whatsapp-btn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function(e) {
+            saveFormState();
+            handleWhatsAppClick(e);
+        });
+    }
+});
+
+// Atualiza a função de progresso
+function updateProgress(currentStep, totalSteps) {
+    const progressBar = document.querySelector('.progress-bar');
+    const progress = (currentStep / totalSteps) * 100;
+    
+    // Se for a última etapa, complete a barra
+    if (currentStep === totalSteps) {
+        progressBar.style.width = '100%';
+    } else {
+        progressBar.style.width = `${progress}%`;
+    }
+}

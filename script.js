@@ -542,3 +542,52 @@ function updateProgress(currentStep, totalSteps) {
         progressBar.style.width = `${progress}%`;
     }
 }
+
+// Máscara para data
+function maskDate(input) {
+    input.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 8) value = value.slice(0, 8);
+        
+        if (value.length >= 4) {
+            value = value.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+        } else if (value.length >= 2) {
+            value = value.replace(/(\d{2})(\d{2})?/, '$1/$2');
+        }
+        
+        e.target.value = value;
+    });
+}
+
+// Máscara para hora
+function maskTime(input) {
+    input.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 4) value = value.slice(0, 4);
+        
+        if (value.length >= 2) {
+            value = value.replace(/(\d{2})(\d{2})?/, '$1:$2');
+        }
+        
+        // Validação de hora
+        let hours = parseInt(value.split(':')[0]);
+        if (hours > 23) value = '23' + value.slice(2);
+        
+        // Validação de minutos
+        if (value.length > 2) {
+            let minutes = parseInt(value.split(':')[1]);
+            if (minutes > 59) value = value.slice(0, 3) + '59';
+        }
+        
+        e.target.value = value;
+    });
+}
+
+// Aplicar as máscaras
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInputs = document.querySelectorAll('.date-input');
+    const timeInputs = document.querySelectorAll('.time-input');
+    
+    dateInputs.forEach(input => maskDate(input));
+    timeInputs.forEach(input => maskTime(input));
+});

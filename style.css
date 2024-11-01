@@ -515,3 +515,21 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.date-input,
+.time-input {
+    font-size: 16px !important; /* Previne zoom no iOS */
+    text-align: center;
+    padding: 15px !important;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+/* Esconde os controles nativos */
+input::-webkit-datetime-edit { padding: 0; }
+input::-webkit-calendar-picker-indicator { display: none; }
+input::-webkit-inner-spin-button { display: none; }
